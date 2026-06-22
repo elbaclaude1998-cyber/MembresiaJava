@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: membresia1
+    env: java
+    buildCommand: "mvn clean install -DskipTests"
+    startCommand: "java -jar target/*.jar"
+    plan: free
