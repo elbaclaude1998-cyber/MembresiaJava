@@ -31,18 +31,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     public JwtAuthenticationFilter(JwtService jwtService) {
         this.jwtService = jwtService;
-    }
-    String path = request.getServletPath();
-if (path.startsWith("/auth/")) {
-    filterChain.doFilter(request, response);
-    return;
-}
+    }   
 
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
                                     @NonNull HttpServletResponse response,
                                     @NonNull FilterChain chain) throws ServletException, IOException {
+
+        String path = request.getServletPath();
+        if (path.startsWith("/auth/")) {
+        filterChain.doFilter(request, response);
+        return;
+        }
         String header = request.getHeader("Authorization");
         if (header != null && header.startsWith(BEARER)) {
             try {
