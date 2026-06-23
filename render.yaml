@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: membresia1
-    env: docker
-    plan: free
-    dockerfilePath: Dockerfile
